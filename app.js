@@ -6,29 +6,29 @@ for(let i = 0;i<SQUERES_NUMBERS;i++){
   const squere = document.createElement('div');
   squere.classList.add('squere');
 
-  squere.addEventListener('mouseover',() => 
-  setColor(squere));
+  squere.addEventListener('mouseover',setColor);
   
-  squere.addEventListener('mouseleave',() => 
-  removeColor(squere));
+  squere.addEventListener('mouseleave',removeColor);
 
   board.append(squere);
 }
 
 
-function setColor(element){
+function setColor(event){
+  const element = event.target;
   const color = getRandomColor();
   element.style.backgroundColor = color;
   element.style.boxShadow = `0 0 2px ${color} , 0 0 10px ${color}`;
 }
 
-function removeColor(element){
+function removeColor(event){
+  const element = event.target;
   const color = getRandomColor();
   element.style.backgroundColor = '#1d1d1d';
   element.style.boxShadow = `0 0 2px #000`;
 }
 
 function getRandomColor(){
-const index = Math.floor(Math.random() * colors.length);
-return colors[index];
+
+return colors[Math.floor(Math.random() * colors.length)];
 }
